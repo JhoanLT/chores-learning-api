@@ -37,6 +37,18 @@ class Task
      */
     private $finishDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="id")
+     * @ORM\JoinColumn(name="category_id_fk", referencedColumnName="category_id")
+     */
+    protected $categoryRel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
+     * @ORM\JoinColumn(name="user_id_fk", referencedColumnName="user_id")
+     */
+    protected $userRel;
+
     public function getId()
     {
         return $this->id;
@@ -111,6 +123,42 @@ class Task
     public function setFinishDate($finishDate)
     {
         $this->finishDate = $finishDate;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryRel()
+    {
+        return $this->categoryRel;
+    }
+
+    /**
+     * @param $categoryRel
+     * @return $this
+     */
+    public function setCategoryRel($categoryRel)
+    {
+        $this->categoryRel = $categoryRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserRel()
+    {
+        return $this->userRel;
+    }
+
+    /**
+     * @param $userRel
+     * @return $this
+     */
+    public function setUserRel($userRel)
+    {
+        $this->userRel = $userRel;
         return $this;
     }
 }

@@ -32,6 +32,18 @@ class Learning
      */
     private $creationDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
+     * @ORM\JoinColumn(name="user_id_fk", referencedColumnName="user_id")
+     */
+    protected $userRel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="id")
+     * @ORM\JoinColumn(name="category_id_fk", referencedColumnName="category_id")
+     */
+    protected $categoryRel;
+
 
     public function getId()
     {
@@ -89,6 +101,42 @@ class Learning
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserRel()
+    {
+        return $this->userRel;
+    }
+
+    /**
+     * @param $userRel
+     * @return $this
+     */
+    public function setUserRel($userRel)
+    {
+        $this->userRel = $userRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryRel()
+    {
+        return $this->categoryRel;
+    }
+
+    /**
+     * @param $categoryRel
+     * @return $this
+     */
+    public function setCategoryRel($categoryRel)
+    {
+        $this->categoryRel = $categoryRel;
         return $this;
     }
 }
