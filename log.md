@@ -20,7 +20,7 @@
 **Link to work:** [Task and learning]()
 
 
-### Day 3: August 07, 2019
+### Day 3: August 07, 2018
 
 **Today's Progress**: We work in the relationships of the tables through the doctrine and we advance to the part in the controllers and repositories of each entity of the API
 
