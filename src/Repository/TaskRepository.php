@@ -18,10 +18,24 @@ class TaskRepository extends EntityRepository
     public function taskList($data){
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();
-        $qb->from("App:Task", "task")
-            ->select("task.name");
-        $result = $qb->getQuery()->getResult();
+        $qb->from("App:Task", "t")
+            ->select("t");
+        /**
+         * @var $results Task[]
+         */
+        $results = $qb->getQuery()->getResult();
 
-        return $result;
+        $tasks = [];
+
+        foreach($results as $task) {
+            $tasks[] = [
+                'code' => $task->getId(),
+                'name' => $task->getName(),
+            ];
+        }
+        return [
+            'status_code' => 201,
+            'data' => $tasks,
+        ];
     }
 }
